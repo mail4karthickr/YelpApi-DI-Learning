@@ -1,0 +1,6 @@
+framework module Pods_YelpApi_DILearning {
+  umbrella header "Pods-YelpApi-DILearning-umbrella.h"
+
+  export *
+  module * { export * }
+}
