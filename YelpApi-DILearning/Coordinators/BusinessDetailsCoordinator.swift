@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 
 class BusinessesDetailsCoordinator: BaseCoordinator<Void> {
-    typealias Business = BusinessesGroup.Business
     typealias MakeBusinessDetailsViewModel = (Business) -> BusinessDetailsViewModel
     typealias MakeBusinessDetailsViewController = () -> BusinessDetailsViewController
     
@@ -44,7 +43,7 @@ class BusinessesDetailsCoordinator: BaseCoordinator<Void> {
         return Observable.never()
     }
     
-    private func openMaps(with coordinates: Business.Coordinates) {
+    private func openMaps(with coordinates: BusinessCoordinates) {
         let url = "http://maps.apple.com/maps?saddr=\(coordinates.latitude),\(coordinates.longitude)"
         UIApplication.shared.openURL(URL(string:url)!)
     }

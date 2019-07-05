@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct BusinessesGroup: Codable {
-    var businesses: [Business]
+struct YelpBusinessesGroup: Codable {
+    var businesses: [YelpBusiness]
     
-    struct Business: Codable {
+    struct YelpBusiness: Codable {
         var id: String?
         var price: String?
         var name: String?
@@ -32,7 +32,7 @@ struct BusinessesGroup: Codable {
     }
 }
 
-extension BusinessesGroup {
+extension YelpBusinessesGroup {
     var allBusinessNames: [String] {
         return businesses.map { $0.name ?? "" }
     }

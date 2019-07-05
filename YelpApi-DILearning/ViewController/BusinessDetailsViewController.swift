@@ -31,7 +31,8 @@ class BusinessDetailsViewController: UIViewController, StoryboardInitializable {
             .disposed(by: disposeBag)
         
         Observable.zip(openMaps.rx.tap.asObservable(), viewModel.businessCoordinates)
-            .map { $0.1 }
+            .filter { $0.1 != nil }
+            .map { $0.1! }
             .bind(to: viewModel.selectOpenMaps)
             .disposed(by: disposeBag)
     }

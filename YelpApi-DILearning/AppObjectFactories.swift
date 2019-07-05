@@ -9,7 +9,6 @@
 import UIKit
 
 class AppObjectFactories {
-    typealias Business = BusinessesGroup.Business
     func makeAppCoordinator(window: UIWindow) -> AppCoordinator {
         let categoriesListCoordinator = makeCategoriesListCoordinator(window: window)
         return AppCoordinator(categoriesListCoordinator: categoriesListCoordinator)
@@ -30,7 +29,7 @@ class AppObjectFactories {
     }
     
     func makeCategoriesListViewModel() -> CategoriesListViewModel {
-        return CategoriesListViewModel(ylpClient: makeYLPClient(), appSettings: makeAppSettings())
+        return CategoriesListViewModel(ylpClient: makeYLPClient())
     }
     
     func makeCategoriesListViewController() -> CategoriesListViewController {
@@ -59,7 +58,12 @@ class AppObjectFactories {
     }
     
     func makeBusinessListViewModel(categoryName: String) -> BusinessesListViewModel {
-        return BusinessesListViewModel(selectedCategory: categoryName, ylpClient: makeYLPClient(), appSettings: makeAppSettings())
+        let makeBusinessGroupCareTakerFactory = {
+            return self.makeBusinessGroupCareTaker(diskCareTaker: self.makeDiskCareTaker())
+        }
+        return BusinessesListViewModel(selectedCategory: categoryName,
+                                ylpClient: makeYLPClient(),
+                                businessGroupCareTaker: makeBusinessGroupCareTakerFactory)
     }
     
     // MARK: - Business details listing
@@ -85,8 +89,8 @@ class AppObjectFactories {
         return BusinessDetailsViewController.initFromStoryboard(name: "BusinessDetails")
     }
     
-    func makeBusinessDetailsViewModel(business: BusinessesGroup.Business) -> BusinessDetailsViewModel {
-        return BusinessDetailsViewModel(business: business, appSettings: makeAppSettings())
+    func makeBusinessDetailsViewModel(business: Business) -> BusinessDetailsViewModel {
+        return BusinessDetailsViewModel(business: business)
     }
     
     // MARK: - Common
@@ -94,7 +98,11 @@ class AppObjectFactories {
         return YLPClient()
     }
     
-    func makeAppSettings() -> AppSettings {
-        return AppSettings.shared
+    func makeDiskCareTaker() -> DiskCareTaker {
+        return DiskCareTaker()
+    }
+    
+    func makeBusinessGroupCareTaker(diskCareTaker: DiskCareTaker) -> BusinessGroupCareTaker {
+        return BusinessGroupCareTaker(diskCareTaker: diskCareTaker)
     }
 }

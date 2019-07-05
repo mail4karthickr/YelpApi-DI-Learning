@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 
 class BusinessesListCoordinator: BaseCoordinator<Void> {
-    typealias Business = BusinessesGroup.Business
     typealias MakeBusinessDetailsCoordinator = (UINavigationController, Business) -> BusinessesDetailsCoordinator
     typealias MakeBusinessListViewModel = (String) -> BusinessesListViewModel
     

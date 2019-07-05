@@ -10,20 +10,19 @@ import Foundation
 import RxSwift
 
 class BusinessDetailsViewModel {
-    typealias Coordinates = BusinessesGroup.Business.Coordinates
     let businessName: Observable<String>
     let businessAddress: Observable<String>
-    let businessCoordinates: Observable<Coordinates>
-    let didSelectOpenMaps: Observable<Coordinates>
+    let businessCoordinates: Observable<BusinessCoordinates?>
+    let didSelectOpenMaps: Observable<BusinessCoordinates>
     
-    let selectOpenMaps: AnyObserver<Coordinates>
+    let selectOpenMaps: AnyObserver<BusinessCoordinates>
     
-    init(business: BusinessesGroup.Business, appSettings: AppSettings) {
+    init(business: Business) {
         businessName = .just(business.name ?? "")
-        businessAddress = .just(business.location.address1 ?? "")
+        businessAddress = .just("")
         businessCoordinates = .just(business.coordinates)
         
-        let openMapsSubject = PublishSubject<Coordinates>()
+        let openMapsSubject = PublishSubject<BusinessCoordinates>()
         selectOpenMaps = openMapsSubject.asObserver()
         didSelectOpenMaps = openMapsSubject.asObservable()
     }

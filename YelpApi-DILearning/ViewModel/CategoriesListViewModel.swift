@@ -17,7 +17,7 @@ class CategoriesListViewModel {
     
     let selectCategory: AnyObserver<String>
     
-    init(ylpClient: YLPClient, appSettings: AppSettings) {
+    init(ylpClient: YLPClient) {
         let result = ylpClient.getAllCategories()
         categoryNames = result
             .filter { $0.isSuccess }

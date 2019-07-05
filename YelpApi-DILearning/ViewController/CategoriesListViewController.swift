@@ -19,6 +19,7 @@ class CategoriesListViewController: UIViewController, StoryboardInitializable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel
             .categoryNames
             .bind(to: tableView.rx.items(cellIdentifier: "CategoriesListingCell", cellType: UITableViewCell.self)) { row, element, cell in
