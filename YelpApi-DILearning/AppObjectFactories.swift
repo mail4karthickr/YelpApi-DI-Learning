@@ -62,7 +62,8 @@ class AppObjectFactories {
             return self.makeBusinessGroupCareTaker(diskCareTaker: self.makeDiskCareTaker())
         }
         return BusinessesListViewModel(selectedCategory: categoryName,
-                                ylpClient: makeYLPClient(),
+                                       ylpClient: makeYLPClient(),
+                                       businessMerger: BusinessMerger(), 
                                 businessGroupCareTaker: makeBusinessGroupCareTakerFactory)
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770082DE22CEEEF100E32942 /* BusinessMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770082DD22CEEEF100E32942 /* BusinessMerger.swift */; };
 		77016D6C22CE54A40084BC5F /* BusinessListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77016D6A22CE521A0084BC5F /* BusinessListViewCell.swift */; };
 		7703281D22CE3DFD009F2D03 /* favouriteUnselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7703281B22CE3DFD009F2D03 /* favouriteUnselected.png */; };
 		7703281E22CE3DFD009F2D03 /* favouriteSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7703281C22CE3DFD009F2D03 /* favouriteSelected.png */; };
@@ -75,6 +76,7 @@
 		4ABFC9A9776E9B4C2721CDA7 /* Pods_YelpApi_DILearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YelpApi_DILearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E04D817FC283CD3926C4913 /* Pods-YelpApi-DILearningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpApi-DILearningTests.release.xcconfig"; path = "Target Support Files/Pods-YelpApi-DILearningTests/Pods-YelpApi-DILearningTests.release.xcconfig"; sourceTree = "<group>"; };
 		7395DC872FAF49C7B36D1A4D /* Pods-YelpApi-DILearningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpApi-DILearningTests.debug.xcconfig"; path = "Target Support Files/Pods-YelpApi-DILearningTests/Pods-YelpApi-DILearningTests.debug.xcconfig"; sourceTree = "<group>"; };
+		770082DD22CEEEF100E32942 /* BusinessMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMerger.swift; sourceTree = "<group>"; };
 		77016D6A22CE521A0084BC5F /* BusinessListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessListViewCell.swift; sourceTree = "<group>"; };
 		7703281B22CE3DFD009F2D03 /* favouriteUnselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favouriteUnselected.png; sourceTree = "<group>"; };
 		7703281C22CE3DFD009F2D03 /* favouriteSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favouriteSelected.png; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				7782110F22C7717200E84540 /* CategoriesGroup.swift */,
 				778210FF22C75A1300E84540 /* YelpBusinessesGroup.swift */,
 				77F5262422CDA5C9000A5549 /* Business.swift */,
+				770082DD22CEEEF100E32942 /* BusinessMerger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				7703282022CE426E009F2D03 /* BusinessGroupCareTaker.swift in Sources */,
 				77AC0A9522C8541C00DB41E6 /* BusinessesListViewController.swift in Sources */,
 				775E61A822C59DBB00DAAF52 /* AppDelegate.swift in Sources */,
+				770082DE22CEEEF100E32942 /* BusinessMerger.swift in Sources */,
 				7782110722C76C7100E84540 /* CategoriesListViewController.swift in Sources */,
 				7782110522C76B4000E84540 /* BusinessDetailsViewController.swift in Sources */,
 			);

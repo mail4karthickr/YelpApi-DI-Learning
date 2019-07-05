@@ -33,8 +33,13 @@ class BusinessesListViewController: UIViewController, StoryboardInitializable {
                 .map { element }
                 .bind(to: self.viewModel.markBusinessAsFavourite)
                 .disposed(by: cell.disposeBag)
+            
+            let image = element.isFavourite ? UIImage(imageLiteralResourceName: "favouriteSelected") : UIImage(imageLiteralResourceName: "favouriteUnselected")
+            cell.favouriteButton.setImage(image, for: .normal)
             }
             .disposed(by: disposeBag)
+        
+        
         
         tableView
             .rx

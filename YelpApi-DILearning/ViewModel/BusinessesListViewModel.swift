@@ -22,15 +22,12 @@ class BusinessesListViewModel {
     
     init(selectedCategory: String,
          ylpClient: YLPClient,
+         businessMerger: BusinessMerger,
          businessGroupCareTaker: MakeBusinessGroupCareTakerFactory) {
         self.businessGroupCareTaker = businessGroupCareTaker()
         var searchQuery = SearchQuery(searchType: .location("SanFrancisco"))
         searchQuery.term = selectedCategory
         let res = ylpClient.search(with: searchQuery)
-        
-        businessesName = res.filter { $0.isSuccess }
-            .map { $0.value! }
-            .map { $0.adaptAllYLPBusiness() }
         
         let allYelpBusinesses = res.filter { $0.isSuccess }
             .map { $0.value! }
@@ -38,11 +35,9 @@ class BusinessesListViewModel {
         
         let favouriteYelpBusinesses = self.businessGroupCareTaker.retrieveAllFavouriteBusinesses()
         
-        res
-            .filter { $0.isError }
-            .map { $0.error! }
-            .subscribe(onNext: { error in
-                print("error ---- \(error)")
+        businessesName = Observable.zip(favouriteYelpBusinesses, allYelpBusinesses).map { businessMerger.merge(favouriteBusinesses: $0, withAllBusinesses: $1) }
+            .do(onNext: { ff in
+                print("ff --- \(ff)")
             })
         
         let _selectBusinessSubject = PublishSubject<Business>()
@@ -56,6 +51,8 @@ class BusinessesListViewModel {
             .subscribe(onNext: { bus in
                 print("bus --- \(bus)")
                 do {
+                    var bus = bus
+                    bus.isFavourite = !bus.isFavourite
                     try self.businessGroupCareTaker.save(business: bus)
                 } catch {
                     print("error --- \(error)")
